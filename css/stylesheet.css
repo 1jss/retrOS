@@ -57,13 +57,21 @@ body {
     z-index: 10000;
 }
 
+.icon {
+    width: 64px;
+    height: 64px;
+    border: 2px solid var(--accent);
+    border-radius: 16px;
+    display: block;
+    margin: 0 auto;
+}
 #task-bar {
     position: absolute;
     right: 0;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 64px;
+    height: 80px;
     z-index: 9999;
 }
 
@@ -100,13 +108,6 @@ body {
 
 .task-window b.focus i {
     transform: scale(1.2);
-}
-
-.task-window i {
-    display: inline-block;
-    text-align: center;
-    font-size: 64px;
-    color: var(--accent);
 }
 
 .task-window b:hover span {
@@ -159,11 +160,11 @@ body {
     transform: scale(1.2);
 }
 
-#desk ul li i {
+#desk ul li i, #task-bar ul li i {
     display: inline-block;
-    width: 120px;
     text-align: center;
-    font-size: 64px;
+    font-size: 38px;
+    line-height: 62px;
     color: var(--accent);
 }
 
