@@ -1,0 +1,60 @@
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
+#mapid { height: 100%; }
+
+
+.leaflet-bar {
+	box-shadow: none;
+	border-radius: 10px;
+    background: none;
+	}
+.leaflet-bar a {
+	border-radius: 4px;
+    background-size: 64px 64px;
+    filter: saturate(175%);
+	}
+.leaflet-bar a,
+.leaflet-bar a:hover {
+	width: 64px;
+	height: 64px;
+	line-height: 62px;
+	display: block;
+	text-align: center;
+	text-decoration: none;
+	color: black;
+	}
+.leaflet-bar a:hover {
+    filter:brightness(105%);
+	}
+.leaflet-bar a:first-child {
+    background: url("../images/zoom-in.png");
+    background-size: 64px 64px;
+    margin-bottom: 10px;
+    border: 2px solid #000;
+	}
+.leaflet-bar a:last-child {
+    background: url("../images/zoom-out.png");
+    background-size: 64px 64px;
+	border: 2px solid #000;
+	}
+
+.leaflet-bar a.leaflet-disabled {
+    border-color: #555;
+	color: #555;
+    filter: grayscale(100%) opacity(75%);
+	}
+
+/* zoom control */
+
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out {
+	font: bold 32px 'Lucida Console', Monaco, monospace;
+	text-indent: 1px;
+	}
+
+.leaflet-touch .leaflet-control-zoom-in, .leaflet-touch .leaflet-control-zoom-out  {
+	font-size: 22px;
+	}
