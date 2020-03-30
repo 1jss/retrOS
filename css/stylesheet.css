@@ -64,6 +64,7 @@ body {
     border-radius: 16px;
     display: block;
     margin: 0 auto;
+    box-shadow: 2px 2px 0 var(--accent);
 }
 #task-bar {
     position: absolute;
@@ -76,13 +77,10 @@ body {
 }
 
 .task-window {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    left: 0;
     height: 80px;
+    width: max-content;
     padding: 8px;
-    float: left;
+    margin: 0 auto;
 }
 
 .task-window li {
@@ -209,10 +207,16 @@ body {
 }
 
 .title-handle {
+    color: var(--primary);
     overflow: hidden;
     position: absolute;
     right: 0px;
     top: 0px;
+    padding-left: 4px;
+}
+
+.title-handle:hover {
+    color: var(--accent);
 }
 
 .title-handle a {
@@ -222,6 +226,7 @@ body {
     border-radius: 12px;
     border: 2px solid var(--accent);
     background: var(--primary);
+    color: inherit;
     margin: 4px 4px 4px 0;
     line-height: 12px;
     font-size: 12px;
@@ -232,7 +237,10 @@ body {
 
 .title-handle a:hover {
     text-decoration: none;
-    background-color: var(--accent);
+}
+
+.title-handle a:active {
+    background: var(--accent);
     color: var(--primary);
 }
 
