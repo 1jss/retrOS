@@ -1,7 +1,7 @@
 ﻿//id,iconName,iconUrl,url,width,height
 var shortcut = [
 [0,"Map","atlas","apps/map/index.html",500,500],
-[1,"Bible","bible","apps/dummy/index.html",500,500],
+[1,"Bible","bible","apps/bible/index.html",500,500],
 [2,"Address Book","address-book","apps/dummy/index.html",500,500],
 [3,"Fire","fire","apps/dummy/index.html",500,500],
 [4,"Calculator","calculator","apps/dummy/index.html",500,500],

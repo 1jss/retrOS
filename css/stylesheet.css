@@ -210,9 +210,9 @@ body {
     color: var(--primary);
     overflow: hidden;
     position: absolute;
-    right: 0px;
+    left: 0px;
     top: 0px;
-    padding-left: 4px;
+    padding-right: 4px;
 }
 
 .title-handle:hover {
@@ -227,7 +227,7 @@ body {
     border: 2px solid var(--accent);
     background: var(--primary);
     color: inherit;
-    margin: 4px 4px 4px 0;
+    margin: 4px 0 4px 4px;
     line-height: 12px;
     font-size: 12px;
     overflow: hidden;
@@ -280,4 +280,18 @@ body {
     bottom: 0;
     left: 0;
     right: 0;
+}
+
+iframe.content::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+/* Handle */
+iframe.content::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(255,0,0,0.8);
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
 }

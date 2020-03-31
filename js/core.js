@@ -6,7 +6,7 @@ Core.config = {
     createIndexid: 1,
     windowMinWidth: 150,
     windowMinHeight: 56,
-    dockHeight: 64+16
+    dockHeight: 64 + 16
 };
 Core.init = function() {
     $(document).on('click', 'body', function() {
@@ -66,34 +66,22 @@ Core.init = function() {
     $(document).on('click', '#desk li', function() {
         Core.create($(this));
     }).on('click', '.task-window li', function() {
-		Core.taskwindow($(this));
-	}).on('click', '.window-container', function() {
+        Core.taskwindow($(this));
+    }).on('click', '.window-container', function() {
         Core.container($(this));
     });
 };
 Core.create = function(obj, opt) {
-    if (typeof(obj) === 'string') {
-        var options = {
-            num: Date.parse(new Date()),
-            imgsrc: "images/shortcut/news.png",
-            title: opt.title,
-            url: opt.url,
-            width: opt.width,
-            height: opt.height,
-            resize: opt.resize
-        };
-    } else {
-        var sc = obj.attr('shortcut');
-        var options = {
-            num: shortcut[sc][0],
-            title: shortcut[sc][1],
-            imgsrc: shortcut[sc][2],
-            url: shortcut[sc][3],
-            width: shortcut[sc][4],
-            height: shortcut[sc][5],
-            resize: true
-        };
-    }
+    var sc = obj.attr('shortcut');
+    var options = {
+        num: shortcut[sc][0],
+        title: shortcut[sc][1],
+        imgsrc: shortcut[sc][2],
+        url: shortcut[sc][3],
+        width: $(window).width()/2,
+        height: ($(window).height()-Core.config.dockHeight)/2,
+        resize: true
+    };
     var window_warp = 'window_' + options.num + '_warp';
     var window_inner = 'window_' + options.num + '_inner';
     var iswindowopen = 0;
@@ -122,8 +110,10 @@ Core.create = function(obj, opt) {
             "title": options.title,
             "imgsrc": options.imgsrc
         };
-        var top = ($(window).height() - options.height - Core.config.dockHeight) / 2 <= 0 ? 0 : ($(window).height() - options.height - Core.config.dockHeight) / 2;
-        var left = ($(window).width() - options.width) / 2 <= 0 ? 0 : ($(window).width() - options.width) / 2;
+        var top = ($(window).height() - Core.config.dockHeight)/4;
+        var left = $(window).width()/4;
+        // var top = ($(window).height() - options.height - Core.config.dockHeight) / 2 <= 0 ? 0 : ($(window).height() - options.height - Core.config.dockHeight) / 2;
+        // var left = ($(window).width() - options.width) / 2 <= 0 ? 0 : ($(window).width() - options.width) / 2;
         _cache.windowTemp = {
             "width": options.width,
             "height": options.height,
@@ -236,9 +226,9 @@ Core.handle = function(obj) {
     });
     obj.find(".title-bar").on("dblclick", function(e) {
         if ($(this).find(".ha-max").is(":visible")) {
-            $(this).find(".ha-max").trigger( 'click' );
+            $(this).find(".ha-max").trigger('click');
         } else {
-            $(this).find(".ha-revert").trigger( 'click' );
+            $(this).find(".ha-revert").trigger('click');
         }
     });
     obj.find(".ha-close").on("click", function(e) {
@@ -263,7 +253,7 @@ Core.bindWindowMove = function(obj) {
         sL = obj.offset().left; // window distance from left
         _cache.MoveLayOut = GetLayOutBox();
         var lay = $(window); // browser window height and width
-        lay.off( "mousemove").on("mousemove", function(e) {
+        lay.off("mousemove").on("mousemove", function(e) {
             _cache.MoveLayOut.show();
             obj.find(".ha-revert").hide().prev(".ha-max").show(); // change button
             eX = e.screenX;
@@ -305,9 +295,9 @@ Core.bindWindowMove = function(obj) {
                 emptyH: $(window).height() - obj.data("info").height
             });
         });
-        lay.off( "mouseup").on("mouseup", function() {
+        lay.off("mouseup").on("mouseup", function() {
             _cache.MoveLayOut.hide();
-            $(this).off( "mousemove");
+            $(this).off("mousemove");
         });
     });
 };
@@ -327,7 +317,7 @@ Core.bindWindowResize = function(obj) {
             sT = obj.offset().top; // window distance from top
             sL = obj.offset().left; // window distance from left
             _cache.MoveLayOut = GetLayOutBox();
-            lay.off( "mousemove").on("mousemove", function(e) {
+            lay.off("mousemove").on("mousemove", function(e) {
                 _cache.MoveLayOut.show();
                 _t = e.clientY; // current mouse y
                 _l = e.clientX; // current mouse x
@@ -383,7 +373,7 @@ Core.bindWindowResize = function(obj) {
                     case "rt":
                         if (h + cy - _t > Core.config.windowMinHeight) {
                             obj.css({
-                                height: (h + cy - _t) + "px",// start window height + start mouse y - current mouse y
+                                height: (h + cy - _t) + "px", // start window height + start mouse y - current mouse y
                                 top: _t + "px"
                             });
                         }
@@ -396,12 +386,12 @@ Core.bindWindowResize = function(obj) {
                     case "rb":
                         if (w - cx + _l > Core.config.windowMinWidth) {
                             obj.css({
-                                width: (w - cx + _l) + "px"// start window width - start mouse x + current mouse x
+                                width: (w - cx + _l) + "px" // start window width - start mouse x + current mouse x
                             });
                         }
                         if (h - cy + _t > Core.config.windowMinHeight) {
                             obj.css({
-                                height: (h - cy + _t) + "px"// start window height - start mouse y + current mouse y
+                                height: (h - cy + _t) + "px" // start window height - start mouse y + current mouse y
                             });
                         }
                         break;
@@ -442,9 +432,9 @@ Core.bindWindowResize = function(obj) {
                     emptyH: $(window).height() - obj.height()
                 });
             });
-            lay.off( "mouseup").on("mouseup", function() {
+            lay.off("mouseup").on("mouseup", function() {
                 _cache.MoveLayOut.hide();
-                $(this).off( "mousemove");
+                $(this).off("mousemove");
             });
         });
     }
@@ -464,8 +454,8 @@ var GetTaskSystem = function(obj) {
             return false;
         });
     }
-    $('.task-menu a[menu="close"]').off( "click").on("click", function() {
-        $('#window_' + obj.attr('window') + '_inner .title-handle .ha-close').trigger( 'click' );
+    $('.task-menu a[menu="close"]').off("click").on("click", function() {
+        $('#window_' + obj.attr('window') + '_inner .title-handle .ha-close').trigger('click');
         $('.task-menu').hide();
     });
     return _cache.TaskSystem;
@@ -483,7 +473,7 @@ $(document).ready(function() {
     }
     Core.init();
 });
-$(".startMenuBtn").on( 'click', function() {
+$(".startMenuBtn").on('click', function() {
     Core.showDesktop();
 });
 $("#desk li:last").hide();
