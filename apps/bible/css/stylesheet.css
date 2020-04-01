@@ -6,10 +6,15 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-form, ul, ol, li, dl, dt, dd, h1, h2, h3, h4, h5, p {
-    list-style: none outside none
+html {
+    scroll-behavior: smooth;
+}
+
+dd, dl, dt, form, h1, h2, h3, h4, h5, li, ol, p, ul {
+    list-style: none outside none;
 }
 
 a {
@@ -23,83 +28,116 @@ a:hover {
     color: var(--accent);
 }
 
-a img {
-    border: none
-}
-
-.fr {
-    float: right
-}
-
-.fl {
-    float: left
-}
-
-::-webkit-scrollbar-track {
-    background-color: var(--primary);
-}
-::-webkit-scrollbar {
-    width: 16px;
-    background-color: var(--primary);
-}
-::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    border: 4px solid var(--primary);
-    background-color: var(--accent);
-}
-
 body {
     font: 12px/1.8 Verdana, Geneva, sans-serif;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.05em;
     height: 100%;
     width: 100%;
     background: var(--primary);
     color: var(--accent);
 }
 
-#bible {
-    max-width: 350px;
-    margin: 5em auto;
+::-webkit-scrollbar-track {
+    background-color: var(--primary);
 }
 
-#bible #GT:after, #bible #NT:after {
-    content: "";
-    visibility: hidden;
-    display: block;
-    height: 0;
-    clear: both;
-    padding-bottom: 20px;
+::-webkit-scrollbar {
+    width: 16px;
+    background-color: var(--primary);
 }
 
-#bible h3 {
-    clear: both;
-    text-align: center;
-    margin-bottom: 10px;
-    text-transform: uppercase;
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    border: 4px solid var(--primary);
+    background-color: var(--accent);
 }
 
-#bible a {
-    width: 70px;
-    float: left;
-    text-align: center;
-    line-height: 50px;
+#book-drawer {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 240px;
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+#book-drawer .section {
+    padding: 12px 0;
+}
+
+#book-drawer h1 {
+    font-size: 14px;
+    font-weight: lighter;
+    line-height: 14px;
+    padding: 8px 20px;
+}
+
+.toc li {
     font-size: 12px;
-    border-radius: 4px;
-    background: var(--primary);
-    border: 2px solid var(--accent);
-    margin: 4px;
-    padding: 0;
+    font-weight: lighter;
+    line-height: 12px;
+    padding: 2px 12px;
+    cursor: pointer;
 }
 
-#bible a:hover {
+.toc a {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 4px 8px;
+    max-width: 194px;
+    border: 1px solid var(--primary);
+    border-radius: 4px;
+}
+
+.toc a:hover {
+    border-color: var(--accent);
+}
+
+.toc a:active {}
+
+.toc a.focus {
     background: var(--accent);
     color: var(--primary);
+    border-color: var(--accent);
+}
+
+#book-frame {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 240px;
+    height: 100%;
+    overflow: hidden;
+}
+
+.book-container {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+}
+
+.book-container iframe {
+    position: absolute;
+    border: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    overflow: scroll;
+    float: left;
 }
 
 .book {
     font: 16px/1.6 Georgia, serif;
     letter-spacing: 0.03em;
-    max-width: 350px;
+    max-width: 400px;
     margin: 5em auto;
 }
 
